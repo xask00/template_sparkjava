@@ -19,13 +19,12 @@ public class App {
 
         Gson gson = new Gson();
 
-        port(8080);
-        ImmutableMap<String, ImmutableList<String>> map = ImmutableMap.of("test", ImmutableList.of("1", "2", "3"));
-
         log.info("Starting App");
+
+        port(8080);
         get("/hello", "application/json", (req, res) -> {
             res.type("application/json");
-            return map;
+            return  ImmutableMap.of("test", ImmutableList.of("1", "2", "3"));
         }, gson::toJson);
     }
 }
